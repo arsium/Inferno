@@ -1,9 +1,14 @@
-# :boom: The Inferno
+# :boom: The Inferno:
 Simple command line tool for virus creation  
 
+# :diamonds: Example:
+We can type it in command line:  
+``` batch
+inferno.exe "WEBCAM_SCREENSHOT" "screenshot.jpg" "4500" "1"
+inferno.exe "Command" "Argument1" "Argument2" "Argument3"
+```  
 
-
-# Commands table
+# :book: Commands table:
 | Command                           | Argument 1  | Argument 2  | Argument 3  | Description                       |
 |:---------------------------------:|:-----------:|:-----------:|:-----------:|:---------------------------------:|
 | CLIPBOARD_SET                     |    text     |    :x:      |     :x:     | Set text to clipboard             |
