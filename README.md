@@ -1,5 +1,10 @@
 # :boom: The Inferno:
-Simple command line tool for virus creation  
+Simple command line tool for virus creation. Written on C#
+
+<p align="center">
+  <img src="logo.png"/>
+</p>
+
 
 # :diamonds: Example:
 We can type it in command line:  
