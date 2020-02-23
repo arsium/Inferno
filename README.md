@@ -2,7 +2,7 @@
 Simple command line tool for virus creation. Written on C#
 
 <p align="center">
-  <img src="logo.png"/>
+  <img src="images/logo.png"/>
 </p>
 
 
@@ -13,6 +13,12 @@ inferno.exe "WEBCAM_SCREENSHOT" "screenshot.jpg" "4500" "1"
 inferno.exe "Command" "Argument1" "Argument2" "Argument3"
 ```  
 
+#  :mega: JSON output:
+<p align="center">
+  <img src="images/example.png"/>
+</p>
+
+
 # :book: Commands table:
 | Command                           | Argument 1  | Argument 2  | Argument 3  | Description                       |
 |:---------------------------------:|:-----------:|:-----------:|:-----------:|:---------------------------------:|
@@ -21,6 +27,7 @@ inferno.exe "Command" "Argument1" "Argument2" "Argument3"
 | DESKTOP_SCREENSHOT                |    filename |    :x:      |     :x:     | Create screenshot of desktop      |
 | WEBCAM_SCREENSHOT                 |    filename |    delay    |     camera  | Create screenshot from webcamera  |
 | MICROPHONE_RECORD                 |    filename |    seconds  |     :x:     | Record audio from microphone      |
+| AUDIO_PLAY                        |    filename |    :x:      |     :x:     | Play .wav file                    |
 | BSOD                              |    :x:      |    :x:      |     :x:     | Make windows screen of death      |
 | WALLPAPER                         |    filename |    :x:      |     :x:     | Set image as wallpaper            |
 | GET_ACTIVE_WINDOW                 |    :x:      |    :x:      |     :x:     | Get title of active window        |
@@ -37,14 +44,17 @@ inferno.exe "Command" "Argument1" "Argument2" "Argument3"
 | AUTORUN_UNINSTALL_REGISTRY        |    filename |    :x:      |     :x:     | Remove file from startup. Method with Registry |
 | AUTORUN_INSTALL_SHELLSTARTUP      |    filename |    :x:      |     :x:     | Add file to startup. Method with startup directory |
 | AUTORUN_UNINSTALL_SHELLSTARTUP    |    filename |    :x:      |     :x:     | Remove file from startup. Method with startup directory |
-| NETWORK_DOWNLOAD_FILE             |    url      |    filename |     :x:     | Download file and save.  |
-| BYPASS_DISABLE_DEFENDER           |    :x:      |    :x:      |     :x:     | Disable Windows Defender |
-| BYPASS_DISABLE_UAC                |    :x:      |    :x:      |     :x:     | Disable Windows UAC      |
-| BYPASS_ENABLE_UAC                 |    :x:      |    :x:      |     :x:     | Enable  Windows UAC      |
-| ADMIN_STARTFILE                   |    filename |    :x:      |     :x:     | Start file as admin      |
-| FILE_ENCRYPT                      |    filename |    password |     :x:     | Encrypt file with key    |
-| FILE_DECRYPT                      |    filename |    password |     :x:     | Decrypt file with key    |
-| POWER_SHUTDOWN                    |    :x:      |    :x:      |     :x:     | Power off computer       |
-| POWER_REBOOT                      |    :x:      |    :x:      |     :x:     | Restart computer         |
-| POWER_HIBERNATE                   |    :x:      |    :x:      |     :x:     | Hibernate computer       |
-| POWER_LOGOFF                      |    :x:      |    :x:      |     :x:     | Logoff computer          |
+| NETWORK_DOWNLOAD_FILE             |    url      |    filename |     :x:     | Download file and save.     |
+| NETWORK_UPLOAD_FILE               |    filename |    :x:      |     :x:     | Upload file to Anonfile.com |
+| NETWORK_WHOIS                     |    ip       |    :x:      |     :x:     | Get ip information          |
+| NETWORK_BSSIS_INFO                |    bssid    |    :x:      |     :x:     | Get BSSID information       |
+| BYPASS_DISABLE_DEFENDER           |    :x:      |    :x:      |     :x:     | Disable Windows Defender    |
+| BYPASS_DISABLE_UAC                |    :x:      |    :x:      |     :x:     | Disable Windows UAC         |
+| BYPASS_ENABLE_UAC                 |    :x:      |    :x:      |     :x:     | Enable  Windows UAC         |
+| ADMIN_STARTFILE                   |    filename |    :x:      |     :x:     | Start file as admin         |
+| FILE_ENCRYPT                      |    filename |    password |     :x:     | Encrypt file with key       |
+| FILE_DECRYPT                      |    filename |    password |     :x:     | Decrypt file with key       |
+| POWER_SHUTDOWN                    |    :x:      |    :x:      |     :x:     | Power off computer          |
+| POWER_REBOOT                      |    :x:      |    :x:      |     :x:     | Restart computer            |
+| POWER_HIBERNATE                   |    :x:      |    :x:      |     :x:     | Hibernate computer          |
+| POWER_LOGOFF                      |    :x:      |    :x:      |     :x:     | Logoff computer             |
