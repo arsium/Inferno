@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Inferno
 {
@@ -10,7 +10,7 @@ namespace Inferno
         [STAThreadAttribute]
         static void Main(string[] args)
         {
-          
+
             // Get command line args
             string cmd = "", arg1 = "", arg2 = "", arg3 = "";
             if (args.Length > 0)
@@ -164,9 +164,19 @@ namespace Inferno
                         network.Whois(arg1);
                         break;
                     }
+                case "NETWORK_BSSID_GET": // (null)
+                    {
+                        network.BssidGet();
+                        break;
+                    }
                 case "NETWORK_BSSID_INFO": // (bssid)
                     {
                         network.BssidInfo(arg1);
+                        break;
+                    }
+                case "NETWORK_PORT_IS_OPEN":  // (ip, port)
+                    {
+                        network.PortIsOpen(arg1, arg2);
                         break;
                     }
                 // Bypass
@@ -193,22 +203,22 @@ namespace Inferno
                 // Power
                 case "POWER_SHUTDOWN": // (null)
                     {
-                        power.shutdown();
+                        power.Shutdown();
                         break;
                     }
                 case "POWER_REBOOT": // (null)
                     {
-                        power.reboot();
+                        power.Reboot();
                         break;
                     }
                 case "POWER_HIBERNATE": // (null)
                     {
-                        power.hibernate();
+                        power.Hibernate();
                         break;
                     }
                 case "POWER_LOGOFF": // (null)
                     {
-                        power.logoff();
+                        power.Logoff();
                         break;
                     }
                 // Encryption
@@ -231,3 +241,4 @@ namespace Inferno
         }
     }
 }
+

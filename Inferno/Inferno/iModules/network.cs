@@ -1,13 +1,18 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
+using System.Runtime.InteropServices;
 
 namespace Inferno
 {
     internal class network
     {
-
+        [DllImport("iphlpapi.dll", ExactSpelling = true)]
+        public static extern int SendARP(int destIp, int srcIP, byte[] macAddr, ref uint physicalAddrLen);
         // Output
         private static dynamic output = new System.Dynamic.ExpandoObject();
 
@@ -77,18 +82,102 @@ namespace Inferno
             core.Exit("Whois data received!", output);
         }
 
-        // BSSID
+        // BSSID get info
         public static void BssidInfo(string bssid)
         {
             // Url
-            string url = @"http://api.mylnikov.org/geolocation/wifi?v=1.1&data=open&bssid=" + bssid;
+            string url = @"https://api.mylnikov.org/geolocation/wifi?bssid=" + bssid;
             // GET request
             WebClient client = new WebClient();
             string response = client.DownloadString(url);
             // Parse json
             dynamic json = JObject.Parse(response);
-            output.bssid = json;
-            core.Exit("BSSID info received!", output);
+            // Check results
+            if(json.result == 200)
+            {
+                output.bssid = json.data;
+                core.Exit("BSSID info received!", output);
+            } else
+            { 
+                output.error = true;
+                core.Exit(json.desc.ToString(), output);
+            }
+            
+            
+        }
+
+        // Get router BSSID
+        public static void BssidGet()
+        {
+            NetworkInterface[] adapters = NetworkInterface.GetAllNetworkInterfaces();
+            foreach (NetworkInterface adapter in adapters)
+            {
+                IPInterfaceProperties adapterProperties = adapter.GetIPProperties();
+                GatewayIPAddressInformationCollection addresses = adapterProperties.GatewayAddresses;
+                if (addresses.Count > 0)
+                {
+                    foreach (GatewayIPAddressInformation address in addresses)
+                    {
+                        string ip = address.Address.ToString();
+                        // Check ip '.'
+                        if (ip.Split('.').Length == 4)
+                        {
+                            // Check port 80
+                            if(portIsOpen(ip, 80))
+                            {
+                                // Get BSSID
+                                IPAddress dst = IPAddress.Parse(ip);
+                                byte[] macAddr = new byte[6];
+                                uint macAddrLen = (uint)macAddr.Length;
+                                if (SendARP(BitConverter.ToInt32(dst.GetAddressBytes(), 0), 0, macAddr, ref macAddrLen) != 0)
+                                {
+                                    output.router_ip = ip;
+                                    output.error = true;
+                                    core.Exit("Send ARP failed", output, 3);
+                                }
+                                    
+                                string[] str = new string[(int)macAddrLen];
+                                for (int i = 0; i < macAddrLen; i++)
+                                    str[i] = macAddr[i].ToString("x2");
+                                string bssid = string.Join(":", str);
+
+                                output.router_ip = ip;
+                                output.bssid = bssid;
+                                core.Exit("Router BSSID received!", output);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Check target port
+        private static bool portIsOpen(string target, int port)
+        {
+            TcpClient tcpClient = new TcpClient();
+            try
+            {
+                tcpClient.Connect(target, port);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        // Check target port
+        public static void PortIsOpen(string target, string port)
+        {
+            if(portIsOpen(target, Int32.Parse(port)))
+            {
+                output.portIsOpen = true;
+                core.Exit("Port " + port + " is open!", output);
+            } else
+            {
+                output.portIsOpen = false;
+                core.Exit("Port " + port + " is closed!", output);
+            }
         }
     }
 }

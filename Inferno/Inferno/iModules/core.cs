@@ -17,6 +17,8 @@ namespace Inferno
     internal class core
     {
 
+       
+
         // Exit
         public static void Exit(string message, dynamic output, int exitcode = 0)
         {

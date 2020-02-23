@@ -1,10 +1,11 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace Inferno
 {
     internal class power
     {
+        // Output
+        private static dynamic output = new System.Dynamic.ExpandoObject();
 
         // Command
         private static void command(string args)
@@ -19,31 +20,31 @@ namespace Inferno
         }
 
         // Poweroff
-        public static void shutdown()
+        public static void Shutdown()
         {
-            Console.WriteLine("Shutting down..");
             command("/s /t 0");
+            core.Exit("Shutting down..", output);
         }
 
         // Restart
-        public static void reboot()
+        public static void Reboot()
         {
-            Console.WriteLine("Rebooting computer..");
             command("/r /t 0");
+            core.Exit("Rebooting computer..", output);
         }
 
         // Hibernate
-        public static void hibernate()
+        public static void Hibernate()
         {
-            Console.WriteLine("Hibernate..");
             command("/h");
+            core.Exit("Hibernate..", output);
         }
 
         // Logoff
-        public static void logoff()
+        public static void Logoff()
         {
-            Console.WriteLine("Logging off..");
             command("/l");
+            core.Exit("Logging off..", output);
         }
     }
 }
