@@ -1,10 +1,12 @@
-# :boom: The Inferno:
+# :fire: The Inferno:
 Simple command line tool for virus creation. Written on C#
 
 <p align="center">
   <img src="images/logo.png"/>
 </p>
 
+# :page_facing_up: Download:
+* Download [Inferno.zip](https://raw.githubusercontent.com/LimerBoy/Inferno/master/bin/Inferno.zip)
 
 # :diamonds: Example:
 We can type it in command line:  
@@ -47,7 +49,9 @@ inferno.exe "Command" "Argument1" "Argument2" "Argument3"
 | NETWORK_DOWNLOAD_FILE             |    url      |    filename |     :x:     | Download file and save.     |
 | NETWORK_UPLOAD_FILE               |    filename |    :x:      |     :x:     | Upload file to Anonfile.com |
 | NETWORK_WHOIS                     |    ip       |    :x:      |     :x:     | Get ip information          |
+| NETWORK_BSSIS_GET                 |    :x:      |    :x:      |     :x:     | Get router mac address      |
 | NETWORK_BSSIS_INFO                |    bssid    |    :x:      |     :x:     | Get BSSID information       |
+| NETWORK_PORT_IS_OPEN              |    ip       |    port     |     :x:     | Check if port is open       |
 | BYPASS_DISABLE_DEFENDER           |    :x:      |    :x:      |     :x:     | Disable Windows Defender    |
 | BYPASS_DISABLE_UAC                |    :x:      |    :x:      |     :x:     | Disable Windows UAC         |
 | BYPASS_ENABLE_UAC                 |    :x:      |    :x:      |     :x:     | Enable  Windows UAC         |
