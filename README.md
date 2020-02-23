@@ -6,7 +6,7 @@ Simple command line tool for virus creation. Written on C#
 </p>
 
 # :page_facing_up: Download:
-* Download [Inferno.zip](https://raw.githubusercontent.com/LimerBoy/Inferno/master/bin/Inferno.zip)
+* Download [Inferno.zip](https://raw.githubusercontent.com/LimerBoy/Inferno/master/bin/Inferno.zip) for windows.
 
 # :diamonds: Example:
 We can type it in command line:  
