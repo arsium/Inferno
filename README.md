@@ -18,30 +18,26 @@ Simple command line tool for virus creation. Written on C#
   ``` batch
   inferno.exe WEBCAM_SCREENSHOT "screenshot.jpg" "4500" "1"
   ```
+  ![WEBCAM_SCREENSHOT](images/example5.gif)
+  
 
 * Rotate monitor:
   ``` batch
   inferno.exe MONITOR_ROTATE "180"
   ```
-  <p align="center">
-    <img src="images/example2.gif"/>
-  </p>
+  ![MONITOR_ROTATE](images/example2.gif)
 
 * Disable monitor:
   ``` batch
   inferno.exe MONITOR_OFF
   ```
-  <p align="center">
-    <img src="images/example3.gif"/>
-  </p>
+  ![MONITOR_OFF](images/example3.gif)
 
 * Blue screen of death:
   ``` batch
   inferno.exe BSOD
   ```
-  <p align="center">
-    <img src="images/example4.gif"/>
-  </p>
+  ![BSOD](images/example4.gif)
 
 # :mega: JSON output:
 <p align="center">
