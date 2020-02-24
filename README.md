@@ -8,13 +8,30 @@ Simple command line tool for virus creation. Written on C#
 # :page_facing_up: Download:
 * Download [Inferno.zip](https://raw.githubusercontent.com/LimerBoy/Inferno/master/bin/Inferno.zip) for windows.
 
-# :diamonds: Example:
-We can type it in command line:  
-``` batch
-inferno.exe "WEBCAM_SCREENSHOT" "screenshot.jpg" "4500" "1"
-inferno.exe "Command" "Argument1" "Argument2" "Argument3"
-```  
-
+# :diamonds: Examples:
+* We can type Inferno commands it in command line:  
+  ``` batch
+  inferno.exe COMMAND "ARGUMENT1" "ARGUMENT2" "ARGUMENT3"
+  ```
+* Create web-cam screenshot:
+  ``` batch
+  inferno.exe WEBCAM_SCREENSHOT "screenshot.jpg" "4500" "1"
+  ```
+* Rotate monitor:
+  ``` batch
+  inferno.exe MONITOR_ROTATE "180"
+  ```
+  <p align="center">
+    <img src="images/example2.gif"/>
+  </p>
+* Disable monitor:
+  ``` batch
+  inferno.exe MONITOR_OFF
+  ```
+  <p align="center">
+    <img src="images/example3.gif"/>
+  </p>
+  
 #  :mega: JSON output:
 <p align="center">
   <img src="images/example.png"/>
