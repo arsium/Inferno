@@ -30,6 +30,7 @@ inferno.exe "Command" "Argument1" "Argument2" "Argument3"
 | WEBCAM_SCREENSHOT                 |    filename |    delay    |     camera  | Create screenshot from webcamera  |
 | MICROPHONE_RECORD                 |    filename |    seconds  |     :x:     | Record audio from microphone      |
 | AUDIO_PLAY                        |    filename |    :x:      |     :x:     | Play .wav file                    |
+| AUDIO_BEEP                        |    frequency|    duration |     :x:     | Make beep sound                   |
 | BSOD                              |    :x:      |    :x:      |     :x:     | Make windows screen of death      |
 | WALLPAPER                         |    filename |    :x:      |     :x:     | Set image as wallpaper            |
 | GET_ACTIVE_WINDOW                 |    :x:      |    :x:      |     :x:     | Get title of active window        |
@@ -40,6 +41,9 @@ inferno.exe "Command" "Argument1" "Argument2" "Argument3"
 | STATUS_IN_VIRTUALBOX              |    :x:      |    :x:      |     :x:     | Check if program in VirtualBox    |
 | STATUS_IN_DEBUGGER                |    :x:      |    :x:      |     :x:     | Check if program in Debugger      |
 | STATUS_IS_ADMIN                   |    :x:      |    :x:      |     :x:     | Check if program running as admin |
+| MONITOR_ROTATE                    |    degrees  |    :x:      |     :x:     | Rotate all displays. Degrees can be only (0, 90, 180, 270) |
+| MONITOR_OFF                       |    :x:      |    :x:      |     :x:     | Monitor off                       |
+| MONITOR_ON                        |    :x:      |    :x:      |     :x:     | Monitor on                        |
 | AUTORUN_INSTALL_TASKSCHEDULER     |    filename |    :x:      |     :x:     | Add file to startup. Method with TaskScheduler |
 | AUTORUN_UNINSTALL_TASKSCHEDULER   |    filename |    :x:      |     :x:     | Remove file from startup. Method with TaskScheduler |
 | AUTORUN_INSTALL_REGISTRY          |    filename |    :x:      |     :x:     | Add file to startup. Method with Registry |
