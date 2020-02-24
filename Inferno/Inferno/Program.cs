@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace Inferno
 {
@@ -64,6 +64,11 @@ namespace Inferno
                         audio.Play(arg1);
                         break;
                     }
+                case "AUDIO_BEEP": // (frequency, duration)
+                    {
+                        audio.Beep(arg1, arg2);
+                        break;
+                    }
                 // Evil
                 case "BSOD": // (null)
                     {
@@ -73,6 +78,26 @@ namespace Inferno
                 case "WALLPAPER": // (filename)
                     {
                         evil.setWallpaper(arg1);
+                        break;
+                    }
+                case "MONITOR_OFF": // (null)
+                    {
+                        monitors.Off();
+                        break;
+                    }
+                case "MONITOR_ON": // (null)
+                    {
+                        monitors.On();
+                        break;
+                    }
+                case "MONITOR_STANDBY": // (null)
+                    {
+                        monitors.StandBy();
+                        break;
+                    }
+                case "MONITOR_ROTATE": // (degrees)
+                    {
+                        monitors.Display.Rotate(arg1);
                         break;
                     }
                 // Activity
@@ -241,4 +266,3 @@ namespace Inferno
         }
     }
 }
-

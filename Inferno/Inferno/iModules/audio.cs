@@ -71,7 +71,15 @@ namespace Inferno
                 output.filename = filename;
                 core.Exit("Audio played!", output);
             }
-            
+        }
+
+        // Beep
+        public static void Beep(string frequency, string duration)
+        {
+            Console.Beep(Int32.Parse(frequency), Int32.Parse(duration));
+            output.frequency = frequency;
+            output.duration = duration;
+            core.Exit("Beep completed!", output);
         }
     }
 }
