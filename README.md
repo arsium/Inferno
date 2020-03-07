@@ -61,14 +61,13 @@ Simple command line tool for virus creation. Written on C#
 | AUDIO_VOLUME                      |    GET/SET  | null, 0-100 |     :x:     | GET or SET system volume          |
 | EVIL_BSOD                         |    :x:      |    :x:      |     :x:     | Make windows screen of death      |
 | EVIL_FORKBOMB                     |    :x:      |    :x:      |     :x:     | Make windows lags, freezes        |
-| BLOCK_SYSTEM                      |    secounds |    :x:      |     :x:     | Block control (mouse, keyboard)   |
+| BLOCK_SYSTEM                      |    seconds |    :x:      |     :x:     | Block control (mouse, keyboard)   |
 | SENDKEYPRESS                      |    keys     |    :x:      |     :x:     | All keys: https://pastebin.com/raw/Qu2gueM7 |
 | WALLPAPER                         |    filename |    :x:      |     :x:     | Set image as wallpaper            |
 | GET_ACTIVE_WINDOW                 |    :x:      |    :x:      |     :x:     | Get title of active window        |
 | GET_CURSOR_POSITION               |    :x:      |    :x:      |     :x:     | Get cursor position (x, y)        |
 | SET_CURSOR_POSITION               |     X       |     Y       |     :x:     | Set cursor position (x, y)        |
-| USER_IS_ACTIVE                    |    IN_SANDBOXIE/IN_VIRTUALBOX/IN_DEBUGGER/IS_ADMIN/BATTERY      |    :x:      |     :x:     | Get status           |
-| STATUS                                           |    :x:      |    :x:      |     :x:     | Check if program in SandBoxie     |
+| STATUS                     |    IN_SANDBOXIE/IN_VIRTUALBOX/IN_DEBUGGER/IS_ADMIN/USER_IS_ACTIVE/BATTERY      |    :x:      |     :x:     | Get status           |
 | MONITOR_ROTATE                    |    degrees  |    :x:      |     :x:     | Rotate all displays. Degrees can be only (0, 90, 180, 270) |
 | MONITOR                       |    ON/OFF/STANDBY      |    :x:      |     :x:     | Toggle monitor |
 | AUTORUN                           | INSTALL/UNINSTALL |    TASKSCHEDULER/REGISTRY/SHELLSTARTUP      |     filename     | Add file to startup. |
