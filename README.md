@@ -29,13 +29,13 @@ Simple command line tool for virus creation. Written on C#
 
 * Disable monitor:
   ``` batch
-  inferno.exe MONITOR_OFF
+  inferno.exe MONITOR "OFF"
   ```
   ![MONITOR_OFF](images/example3.gif)
 
 * Blue screen of death:
   ``` batch
-  inferno.exe BSOD
+  inferno.exe EVIL_BSOD
   ```
   ![BSOD](images/example4.gif)
 
