@@ -28,7 +28,7 @@ namespace Inferno
         public static void isAdministrator()
         {
             
-            output.isAdmin = isAdmin();
+            output.admin = isAdmin();
             core.Exit("Administrator status received", output);
         }
 
@@ -39,10 +39,22 @@ namespace Inferno
             proc.StartInfo.FileName = filename;
             proc.StartInfo.UseShellExecute = true;
             proc.StartInfo.Verb = "runas";
-            proc.Start();
+
+            try
+            {
+                proc.Start();
+            }
+            // err
+            catch (System.ComponentModel.Win32Exception) {
+                output.error = true;
+                core.Exit("Cancelled by user", output);
+            }
+            // ok
             proc.WaitForExit();
             output.exitcode = proc.ExitCode;
             core.Exit("File started", output);
+            
+
         }
 
     }

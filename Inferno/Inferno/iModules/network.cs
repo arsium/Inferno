@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Net.NetworkInformation;
@@ -13,14 +12,11 @@ namespace Inferno
     {
         [DllImport("iphlpapi.dll", ExactSpelling = true)]
         public static extern int SendARP(int destIp, int srcIP, byte[] macAddr, ref uint physicalAddrLen);
+        
         // Output
         private static dynamic output = new System.Dynamic.ExpandoObject();
 
-        // Get BSSID
-        public static void bssid()
-        {
-  
-        }
+     
 
         // Download file
         public static void downloadFile(string url, string foutput = "")
@@ -54,7 +50,8 @@ namespace Inferno
             // Parse json
             dynamic json = JObject.Parse(response);
             // Check upload status
-            if(!json.status)
+            bool status = json["status"];
+            if (!status)
             {
                 output.error = true;
                 output.msg   = json.error.message;
@@ -82,6 +79,62 @@ namespace Inferno
             core.Exit("Whois data received!", output);
         }
 
+        // Geoplugin
+        public static void Geoplugin(string ip = "")
+        {
+            // Url
+            string url = @"http://www.geoplugin.net/json.gp?ip=" + ip;
+            // GET request
+            WebClient client = new WebClient();
+            string response = client.DownloadString(url);
+            // Parse json
+            dynamic json = JObject.Parse(response);
+            output.whois = json;
+            core.Exit("Geo data received!", output);
+        }
+
+        // VirusTotal detection
+        public static void VirusTotal(string filename)
+        {
+            // Url
+            string vt_api = "https://www.virustotal.com/ui/search?query=";
+            // Check file
+            if (!File.Exists(filename))
+            {
+                output.error = true;
+                core.Exit("Failed to check VirusTotal, " + filename + " not found!", output, 1);
+            }
+            else
+            {
+                // Get file md5 hash
+                var md5 = System.Security.Cryptography.MD5.Create();
+                var stream = File.OpenRead(filename);
+                byte[] checksum = md5.ComputeHash(stream);
+                var hash = BitConverter.ToString(checksum).Replace("-", String.Empty).ToLower();
+                // GET request
+                WebClient client = new WebClient();
+                string response = client.DownloadString(vt_api + hash);
+                // Parse json
+                dynamic json = JObject.Parse(response);
+                try
+                {
+                    dynamic result = new System.Dynamic.ExpandoObject();
+                    result.virustotal = json["data"][0]["attributes"]["last_analysis_stats"];
+                    output.malicious = result.virustotal["malicious"];
+                    output.suspicious = result.virustotal["suspicious"];
+                    output.harmless = result.virustotal["harmless"];
+                    output.undetected = result.virustotal["undetected"];
+
+                } catch (ArgumentOutOfRangeException) {
+                    output.error = true;
+                    core.Exit("This file has never been uploaded to VirusTotal", output);
+                }
+                output.hash = hash;
+                output.report = "https://www.virustotal.com/gui/file/" + hash + "/detection";
+                core.Exit("VirusTotal data received!", output);
+            }
+        }
+
         // BSSID get info
         public static void BssidInfo(string bssid)
         {
@@ -97,13 +150,10 @@ namespace Inferno
             {
                 output.bssid = json.data;
                 core.Exit("BSSID info received!", output);
-            } else
-            { 
+            } else {
                 output.error = true;
                 core.Exit(json.desc.ToString(), output);
             }
-            
-            
         }
 
         // Get router BSSID
@@ -155,13 +205,10 @@ namespace Inferno
         private static bool portIsOpen(string target, int port)
         {
             TcpClient tcpClient = new TcpClient();
-            try
-            {
+            try {
                 tcpClient.Connect(target, port);
                 return true;
-            }
-            catch (Exception)
-            {
+            } catch (Exception) {
                 return false;
             }
         }
@@ -173,8 +220,7 @@ namespace Inferno
             {
                 output.portIsOpen = true;
                 core.Exit("Port " + port + " is open!", output);
-            } else
-            {
+            } else {
                 output.portIsOpen = false;
                 core.Exit("Port " + port + " is closed!", output);
             }

@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Inferno
@@ -18,8 +19,19 @@ namespace Inferno
             gfxScreenshot.CopyFromScreen(Screen.PrimaryScreen.Bounds.X, Screen.PrimaryScreen.Bounds.Y, 0, 0, Screen.PrimaryScreen.Bounds.Size, CopyPixelOperation.SourceCopy);
             bmpScreenshot.Save(filename, ImageFormat.Png);
 
-            output.filename = filename;
-            core.Exit("Desktop screenshot created", output);
+            // Check
+            if (File.Exists(filename))
+            {
+                output.filename = filename;
+                core.Exit("Desktop screenshot created", output);
+            }
+            else
+            {
+                output.error = true;
+                core.Exit("Desktop screenshot not created", output, 1);
+            }
         }
+
+
     }
 }

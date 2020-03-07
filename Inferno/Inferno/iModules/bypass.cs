@@ -23,11 +23,10 @@ namespace Inferno
                 }
             };
             proc.Start();
-
         }
 
         // Edit registry
-        private static void RegistryEdit(string regPath, string name, string value)
+        public static void RegistryEdit(string regPath, string name, string value)
         {
             try
             {
@@ -144,6 +143,7 @@ namespace Inferno
             
             core.Exit("UAC disabled, please reboot!", output);
         }
+
         // Enable UAC
         public static void enableUAC()
         {
@@ -157,5 +157,7 @@ namespace Inferno
 
             core.Exit("UAC enabled, please reboot!", output);
         }
+
+        
     }
 }

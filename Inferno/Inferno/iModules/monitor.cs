@@ -22,15 +22,18 @@ namespace Inferno
         public static void On()
         {
             SendMessage((IntPtr)HANDLE, WM_SYSCOMMAND, (IntPtr)SC_MONITORPOWER, (IntPtr)(-1));
+            core.Exit("ON command sent to all monitors!", output);
         }
     
         public static void Off()
         {
             SendMessage((IntPtr)HANDLE, WM_SYSCOMMAND, (IntPtr)SC_MONITORPOWER, (IntPtr)(2));
+            core.Exit("OFF command sent to all monitors!", output);
         }
         public static void StandBy()
         {
             SendMessage((IntPtr)HANDLE, WM_SYSCOMMAND, (IntPtr)SC_MONITORPOWER, (IntPtr)(1));
+            core.Exit("STANDBY command sent to all monitors!", output);
         }
 
         public class Display

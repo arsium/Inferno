@@ -2,6 +2,7 @@
 using System.Management;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace Inferno
 {
@@ -50,7 +51,7 @@ namespace Inferno
 		public static void inVirtualBox()
 		{
 			output.VirtualBox = VirtualBox();
-			core.Exit("Is in VirtualBox", output);
+			core.Exit("VirtualBox check", output);
 		}
 
 		// SandBoxie
@@ -77,7 +78,7 @@ namespace Inferno
 		public static void inSandboxie()
 		{
 			output.SandBoxie = Sandboxie();
-			core.Exit("Is in SandBoxie", output);
+			core.Exit("SandBoxie check", output);
 		}
 
 		// Debugger
@@ -100,7 +101,21 @@ namespace Inferno
 		public static void inDebugger()
 		{
 			output.SandBoxie = Debugger();
-			core.Exit("Is in Debugger", output);
+			core.Exit("Debugger check", output);
+		}
+
+		// Battery
+		public static void betteryLevel()
+		{
+			var result = new System.Collections.Generic.Dictionary<string, string>();
+			string batteryStatus = SystemInformation.PowerStatus.BatteryChargeStatus.ToString();
+			string[] batteryLife = SystemInformation.PowerStatus.BatteryLifePercent.ToString().Split(',');
+
+			result.Add("percentage", batteryLife[batteryLife.Length - 1]);
+			result.Add("status", batteryStatus);
+
+			output.battery = result;
+			core.Exit("Battery information received!", output);
 		}
 	}
 }
