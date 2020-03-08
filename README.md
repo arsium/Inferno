@@ -45,46 +45,155 @@ Simple command line tool for virus creation. Written on C#
 </p>
 
 
-# :book: Commands table:
-| Command                           | Argument 1  | Argument 2  | Argument 3  | Description                       |
-|:---------------------------------:|:-----------:|:-----------:|:-----------:|:---------------------------------:|
-| STEALLER                          |    :x:      |    :x:      |     :x:     | Get passwords from browsers       |
-| CDROM                             |  OPEN/CLOSE | drive/null  |     :x:     | Control CD-ROM                    |
-| CLIPBOARD_SET                     |    text     |    :x:      |     :x:     | Set text to clipboard             |
-| CLIPBOARD_GET                     |    :x:      |    :x:      |     :x:     | Get text from clipboard           |
-| DESKTOP_SCREENSHOT                |    filename |    :x:      |     :x:     | Create screenshot of desktop      |
-| WEBCAM_SCREENSHOT                 |    filename |    delay    |     camera  | Create screenshot from webcamera  |
-| MICROPHONE_RECORD                 |    filename |    seconds  |     :x:     | Record audio from microphone      |
-| AUDIO_SPEAK                       |    text     |    :x:      |     :x:     | Say text                          |
-| AUDIO_PLAY                        |    filename |    :x:      |     :x:     | Play .wav file                    |
-| AUDIO_BEEP                        |    frequency|    duration |     :x:     | Make beep sound                   |
-| AUDIO_VOLUME                      |    GET/SET  | null, 0-100 |     :x:     | GET or SET system volume          |
-| EVIL_BSOD                         |    :x:      |    :x:      |     :x:     | Make windows screen of death      |
-| EVIL_FORKBOMB                     |    :x:      |    :x:      |     :x:     | Make windows lags, freezes        |
-| BLOCK_SYSTEM                      |    seconds |    :x:      |     :x:     | Block control (mouse, keyboard)   |
-| SENDKEYPRESS                      |    keys     |    :x:      |     :x:     | All keys: https://pastebin.com/raw/Qu2gueM7 |
-| WALLPAPER                         |    filename |    :x:      |     :x:     | Set image as wallpaper            |
-| GET_ACTIVE_WINDOW                 |    :x:      |    :x:      |     :x:     | Get title of active window        |
-| GET_CURSOR_POSITION               |    :x:      |    :x:      |     :x:     | Get cursor position (x, y)        |
-| SET_CURSOR_POSITION               |     X       |     Y       |     :x:     | Set cursor position (x, y)        |
-| STATUS                     |    IN_SANDBOXIE/IN_VIRTUALBOX/IN_DEBUGGER/IS_ADMIN/USER_IS_ACTIVE/BATTERY      |    :x:      |     :x:     | Get status           |
-| MONITOR_ROTATE                    |    degrees  |    :x:      |     :x:     | Rotate all displays. Degrees can be only (0, 90, 180, 270) |
-| MONITOR                       |    ON/OFF/STANDBY      |    :x:      |     :x:     | Toggle monitor |
-| AUTORUN                           | INSTALL/UNINSTALL |    TASKSCHEDULER/REGISTRY/SHELLSTARTUP      |     filename     | Add file to startup. |
-| TASKMANAGER                       | START/KILL/FIND/LIST/DISABLE/ENABLE | process/process/process/null/null/null | :x: | Control windows taskmanager |
-| NETWORK_DOWNLOAD_FILE             |    url      |    filename |     :x:     | Download file and save.     |
-| NETWORK_UPLOAD_FILE               |    filename |    :x:      |     :x:     | Upload file to Anonfile.com |
-| NETWORK_VIRUSTOTAL                |    filename |    :x:      |     :x:     | Check file by MD5           |
-| NETWORK_WHOIS                     |    ip       |    :x:      |     :x:     | Get ip information          |
-| NETWORK_GEOPLUGIN                 |    ip       |    :x:      |     :x:     | Get ip geo information      |
-| NETWORK_BSSIS_GET                 |    :x:      |    :x:      |     :x:     | Get router mac address      |
-| NETWORK_BSSIS_INFO                |    bssid    |    :x:      |     :x:     | Get BSSID information       |
-| NETWORK_PORT_IS_OPEN              |    ip       |    port     |     :x:     | Check if port is open       |
-| BYPASS_DISABLE_DEFENDER           |    :x:      |    :x:      |     :x:     | Disable Windows Defender    |
-| BYPASS_DISABLE_UAC                |    :x:      |    :x:      |     :x:     | Disable Windows UAC         |
-| BYPASS_ENABLE_UAC                 |    :x:      |    :x:      |     :x:     | Enable  Windows UAC         |
-| ADMIN_STARTFILE                   |    filename |    :x:      |     :x:     | Start file as admin         |
-| FILE_ENCRYPT                      |    filename |    password |     :x:     | Encrypt file with key       |
-| FILE_DECRYPT                      |    filename |    password |     :x:     | Decrypt file with key       |
-| NIRCMDC                           |    command  |   :x:       |     :x:     | Execute nircmdc command     |
-| POWER                             |    SHUTDOWN/REBOOT/LOGOFF/HIBERNATE     |    :x:      |     :x:     | Control computer power      |
+# :book: All commands:
+* STEALLER  
+	Get passwords from chromium based browsers.
+* CDROM  
+	Open or close CDROM by letter. If letter is not selected it will user all CDROMs.
+	* OPEN drive/null  `Open cdrom`
+	* CLOSE drive/null `Close cdrom`
+* CLIPBOARD  
+	Work with clipboard.
+	* SET text `Set text to clipboard`
+	* GET      `Get text from clipboard`
+* DESKTOP_SCREENSHOT  
+	Create screenshot of desktop and save to file.
+	* filename `Image output filename`
+* WEBCAM_SCREENSHOT  
+	Create screenshot from webcamera and save to file.
+	* filename `Image output filename`
+	* delay    `Camera delay. Recommended: 4500`
+	* camera   `Camera number. Recommended: 1`
+* MICROPHONE_RECORD  
+	Record audio from microphone and save to file.
+	* filename `Audio output filename`
+	* seconds  `Recording secounds`
+* AUDIO_SPEAK  
+	Text to speech.
+	* text `Just text`
+* AUDIO_PLAY  
+	Play .wav file.
+	* filename `Input .wav file`
+* AUDIO_BEEP  
+	Make beep sound.
+	* frequency
+	* duration 
+* AUDIO_VOLUME  
+	Control system audio volume.
+	* SET `0-100`
+	* GET
+* EVIL_BSOD  
+	Make windows screen of death.
+* EVIL_FORKBOMB  
+	Make lags, freezes.
+* BLOCK_SYSTEM  
+	Block control (mouse, keyboard).
+	Need admin rights.
+	* seconds 
+* SENDKEYPRESS  
+	All keys: https://pastebin.com/raw/Qu2gueM7
+	* keys `Keyboard keys`
+* WALLPAPER  
+	Set image as wallpaper.
+	* filename `Input image file`
+* GET_ACTIVE_WINDOW  
+	Get title of active window.
+* GET_CURSOR_POSITION  
+	Get cursor position (x, y).
+* SET_CURSOR_POSITION  
+	Set cursor position (x, y).
+	* x 
+	* y
+* STATUS  
+	Get status.
+	* IN_SANDBOXIE `Check if program in SandBox`
+	* IN_VIRTUALBOX `Check if program in VirtualBox`
+	* IN_DEBUGGER `Check if program in debugger`
+	* IS_ADMIN `Check if user is admin`
+	* USER_IS_ACTIVE `Check if user is active`
+	* BATTERY `Battery information`
+* MONITOR  
+	Make something with monitors.
+	* ROTATE `Rotate all monitors`
+		* degrees `Only 0, 90, 180, 270`
+	* ON `Monitor on`
+	* OFF `Monitor off`
+	* STANDBY `Monitor standby`
+* AUTORUN  
+	Add or remove file from startup.
+	* INSTALL
+		* TASKSCHEDULER
+			* filename
+		* REGISTRY
+			* filename
+		* SHELLSTARTUP
+			* filename
+	* UNINSTALL
+		* TASKSCHEDULER
+			* filename
+		* REGISTRY
+			* filename
+		* SHELLSTARTUP
+			* filename
+* TASKMANAGER  
+	Control windows taskmanager.
+	* START `Start process`
+		* process
+	* KILL `Kill process`
+		* process
+	* FIND `Find process`
+		* process
+	* LIST `Get process list`
+	* DISABLE `Disable taskmanager`
+	* ENABLE `Enable taskmanager`
+* NETWORK_DOWNLOAD_FILE  
+	Download file from url and save.
+	* url `Direct url`
+	* filename `Output filename`
+* NETWORK_UPLOAD_FILE  
+	Upload file to anonfile.com and get link.
+	* filename `Input filename`
+* NETWORK_VIRUSTOTAL  
+	Check file in VirusTotal by MD5.
+	* filename `Input filename`
+* NETWORK_WHOIS  
+	Get ip information.
+	* ip `Target ip or hostname`
+* NETWORK_GEOPLUGIN   
+	Get ip geo information. (currency symbol and etc).
+	* ip `Target ip`
+* NETWORK_BSSIS_GET  
+	Get router mac address.
+* NETWORK_BSSIS_INFO  
+	Get BSSID information. (latitude & longitude).
+	* bssid `Router bssid`
+* NETWORK_PORT_IS_OPEN  
+	Check if port is open.
+	* ip   `Target ip or hostname`
+	* port `Target port`
+* BYPASS_DISABLE_DEFENDER  
+	Disable Windows Defender.
+* BYPASS_DISABLE_UAC 
+	Disable Windows UAC.
+* BYPASS_ENABLE_UAC 
+	Enable  Windows UAC.
+* ADMIN_STARTFILE  
+	Start file as admin.
+	* filename `Input filename`
+* FILE_ENCRYPT  
+	Encrypt file with key.
+	* filename `Input filename`
+	* key `Encryption key`
+* FILE_DECRYPT   
+	Decrypt file with key.
+	* filename `Input filename`
+	* key `Encryption key`
+* NIRCMDC  
+	Run nircmdc command. All commands: https://nircmd.nirsoft.net/
+	* command `Input nircmdc command`
+* POWER  
+	Control computer power.
+	* SHUTDOWN
+	* REBOOT
+	* LOGOFF
+	* HIBERNATE
