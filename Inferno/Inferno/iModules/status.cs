@@ -77,7 +77,7 @@ namespace Inferno
 		// In SandBoxie
 		public static void inSandboxie()
 		{
-			output.SandBoxie = Sandboxie();
+			output.SandBox = Sandboxie();
 			core.Exit("SandBoxie check", output);
 		}
 
@@ -100,7 +100,7 @@ namespace Inferno
 		// In Debugger
 		public static void inDebugger()
 		{
-			output.SandBoxie = Debugger();
+			output.Debugger = Debugger();
 			core.Exit("Debugger check", output);
 		}
 

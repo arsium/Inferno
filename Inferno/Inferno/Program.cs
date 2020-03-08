@@ -31,16 +31,27 @@ namespace Inferno
             switch (cmd)
             {
                 // Clipboard
-                case "CLIPBOARD_SET": // (newClipboardText)
+                case "CLIPBOARD":
                     {
-                        clipboard.Set(arg1);
+                        string c_mode = arg1.ToUpper();
+                        if (c_mode == "SET")
+                        {
+                            clipboard.Set(arg2); // (SET, text)
+                        }
+                        else
+                            if (c_mode == "GET")
+                        {
+                            clipboard.Get(); // (GET, null)
+                        }
+                        else
+                        {
+                            output.error = true;
+                            core.Exit("Failed, mode can be only SET or GET", output);
+                        }
+
                         break;
                     }
-                case "CLIPBOARD_GET": // (null)
-                    {
-                        clipboard.Get();
-                        break;
-                    }
+          
                 // Spy
                 case "DESKTOP_SCREENSHOT": // (filename)
                     {
@@ -170,20 +181,20 @@ namespace Inferno
                             if(m_state == "STANDBY")
                         {
                             monitors.StandBy();
+                        }
+                        else
+                            if (m_state == "ROTATE")
+                        {
+                            monitors.Display.Rotate(arg2);  // (degrees)
                         } else
                         {
                             output.error = true;
-                            core.Exit("Failed, monitor mode can be only OFF or ON", output);
+                            core.Exit("Failed, monitor mode can be only OFF, ON, STANDBY or ROTATE", output);
                         }
                         
                         break;
                     }
 
-                case "MONITOR_ROTATE": // (degrees)
-                    {
-                        monitors.Display.Rotate(arg1);
-                        break;
-                    }
                 // Activity
                 case "GET_ACTIVE_WINDOW": // (null)
                     {
