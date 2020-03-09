@@ -23,7 +23,7 @@ Simple command line tool for virus creation. Written on C#
 
 * Rotate monitor:
   ``` batch
-  inferno.exe MONITOR_ROTATE "180"
+  inferno.exe MONITOR "ROTATE" "180"
   ```
   ![MONITOR_ROTATE](images/example2.gif)
 
